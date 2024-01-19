@@ -1,7 +1,8 @@
 package com.dt.inse.domain.enumerations;
 
 public enum TipoLocalizacao {
-    Urbana, Rural;
+    Urbana(1), Rural(1);
+    public final Integer code;
 
     public static TipoLocalizacao fromInteger(Integer i) {
         return switch (i) {
@@ -9,5 +10,9 @@ public enum TipoLocalizacao {
             case 2 -> Rural;
             default -> null;
         };
+    }
+
+    TipoLocalizacao(Integer code) {
+        this.code = code;
     }
 }

@@ -1,7 +1,9 @@
 package com.dt.inse.domain.enumerations;
 
 public enum TipoRede {
-    Federal, Estadual, Municipal;
+    Federal(1), Estadual(2), Municipal(3);
+
+    public final Integer code;
 
     public static TipoRede fromInteger(Integer i) {
         return switch (i) {
@@ -11,4 +13,9 @@ public enum TipoRede {
             default -> null;
         };
     }
+
+    TipoRede(Integer code) {
+        this.code = code;
+    }
+
 }
