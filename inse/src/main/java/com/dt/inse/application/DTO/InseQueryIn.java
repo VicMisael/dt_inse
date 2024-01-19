@@ -11,7 +11,7 @@ public record InseQueryIn(
         QueryOrder OrderUf,
         Optional<String> Municipio,
         QueryOrder OrderMunicipio,
-        String QuerySchoolName,
+        Optional<String> QuerySchoolName,
         QueryOrder OrderBySchoolName
 
 

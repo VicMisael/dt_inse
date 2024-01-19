@@ -11,8 +11,9 @@ public class InseJpaToInseDomain {
         return new Inse(
                 entity.getAnoSaeb(),
                 entity.getCodUF(),
-                entity.getNomeUF(),
+                entity.getNomeUf(),
                 entity.getCodMunicipio(),
+                entity.getNomeMunicipio(),
                 entity.getIdEscola(),
                 entity.getNomeEscola(),
                 TipoRede.fromInteger(entity.getTipoRede()),

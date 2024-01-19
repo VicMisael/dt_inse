@@ -1,4 +1,4 @@
-package com.dt.inse.application.service.utils;
+package com.dt.inse.application.utils;
 
 import com.dt.inse.commons.QueryOrder;
 import org.springframework.data.domain.Sort;

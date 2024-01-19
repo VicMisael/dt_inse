@@ -3,7 +3,6 @@ package com.dt.inse.infrastructure.JpaEntities;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import org.springframework.data.relational.core.mapping.Table;
 
 import java.math.BigDecimal;
 
@@ -12,27 +11,32 @@ import java.math.BigDecimal;
 @Getter
 public class InseJpaEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "NU_ANO_SAEB")
-    String AnoSaeb;
+    String anoSaeb;
 
     @Column(name = "CO_UF")
-    Long CodUF;
+    Long codUF;
 
     @Column(name = "SG_UF")
-    String NomeUF;
+    String siglaUF;
+
+    @Column(name = "NO_UF")
+    String nomeUf;
 
     @Column(name = "CO_MUNICIPIO")
-    Long CodMunicipio;
+    Long codMunicipio;
+
+    @Column(name = "NO_MUNICIPIO")
+    String nomeMunicipio;
 
     @Column(name = "ID_ESCOLA")
-    Long IdEscola;
+    Long idEscola;
 
     @Column(name = "NO_ESCOLA")
-    String NomeEscola;
+    String nomeEscola;
 
     @Column(name = "TP_TIPO_REDE")
     Integer tipoRede;
@@ -43,36 +47,36 @@ public class InseJpaEntity {
     Integer tipoCapital;
 
     @Column(name = "QTD_ALUNOS_INSE")
-    Long QtdAlunos;
+    Long qtdAlunos;
 
     @Column(name = "MEDIA_INSE")
-    BigDecimal MediaInse;
+    BigDecimal mediaInse;
 
     @Column(name = "INSE_CLASSIFICACAO")
-    String InseClassificacao;
+    String inseClassificacao;
 
     @Column(name = "PC_NIVEL_1")
-    BigDecimal PorcentagemNivel1;
+    BigDecimal porcentagemNivel1;
 
     @Column(name = "PC_NIVEL_2")
-    BigDecimal PorcentagemNivel2;
+    BigDecimal porcentagemNivel2;
 
     @Column(name = "PC_NIVEL_3")
-    BigDecimal PorcentagemNivel3;
+    BigDecimal porcentagemNivel3;
 
     @Column(name = "PC_NIVEL_4")
-    BigDecimal PorcentagemNivel4;
+    BigDecimal porcentagemNivel4;
 
     @Column(name = "PC_NIVEL_5")
-    BigDecimal PorcentagemNivel5;
+    BigDecimal porcentagemNivel5;
 
     @Column(name = "PC_NIVEL_6")
-    BigDecimal PorcentagemNivel6;
+    BigDecimal porcentagemNivel6;
 
     @Column(name = "PC_NIVEL_7")
-    BigDecimal PorcentagemNivel7;
+    BigDecimal porcentagemNivel7;
 
     @Column(name = "PC_NIVEL_8")
-    BigDecimal PorcentagemNivel8;
+    BigDecimal porcentagemNivel8;
 }
 

@@ -11,6 +11,7 @@ public record Inse(
         Long CodUF,
         String NomeUF,
         Long CodMunicipio,
+        String NomeMunicipio,
         Long IdEscola,
         String NomeEscola,
         TipoRede tipoRede,

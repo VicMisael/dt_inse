@@ -2,57 +2,76 @@ package com.dt.inse.application.service.impl;
 
 import com.dt.inse.application.DTO.InseQueryIn;
 import com.dt.inse.application.DTO.aggregation.InseAggregationOut;
+import com.dt.inse.application.gateways.IAggregations;
+import com.dt.inse.application.gateways.IPagedQuery;
 import com.dt.inse.application.service.IInseService;
 import com.dt.inse.domain.enumerations.TipoCapital;
 import com.dt.inse.domain.enumerations.TipoLocalizacao;
+import com.dt.inse.domain.enumerations.TipoRede;
 import com.dt.inse.domain.model.Inse;
 import com.dt.inse.domain.pagination.Pagination;
 import com.dt.inse.infrastructure.JpaEntities.repository.InseRepository;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
 
 
 @Service
 public class InseService implements IInseService {
 
     final InseRepository inseRepository;
+    final IPagedQuery pagedQuery;
+    final IAggregations aggregations;
 
-    public InseService(InseRepository inseRepository) {
+
+    public InseService(InseRepository inseRepository, IPagedQuery pagedQuery, IAggregations aggregations) {
         this.inseRepository = inseRepository;
+        this.pagedQuery = pagedQuery;
+        this.aggregations = aggregations;
     }
 
     @Override
     public Pagination<Inse> QueryInse(InseQueryIn in) {
-        var sort = Sort.by();
+        return pagedQuery.QueryInse(in);
     }
 
     @Override
     public InseAggregationOut AvgByState(Long UfCode) {
-        return null;
+        var mapl = new HashMap<String, Long>();
+        mapl.put("CodUF", UfCode);
+        return aggregations.AvgAggregate(mapl);
+
     }
 
-    @Override
-    public InseAggregationOut MedianByState(Long UfCode) {
-        return null;
-    }
 
     @Override
     public InseAggregationOut AvgByCityType(TipoCapital tipoCapital) {
-        return null;
+        var mapl = new HashMap<String, Long>();
+        mapl.put("tipoCapital", tipoCapital.code.longValue());
+        return aggregations.AvgAggregate(mapl);
     }
 
     @Override
-    public InseAggregationOut MedianByCityType(TipoCapital tipoCapital) {
-        return null;
+    public InseAggregationOut AvgByCity(Long cityId) {
+        var mapl = new HashMap<String, Long>();
+        mapl.put("codMunicipio", cityId);
+        return aggregations.AvgAggregate(mapl);
     }
+
 
     @Override
     public InseAggregationOut AvgByLocationType(TipoLocalizacao tipoLocalizacao) {
-        return null;
+        var mapl = new HashMap<String, Long>();
+        mapl.put("tipoLocalizacao", tipoLocalizacao.code.longValue());
+        return aggregations.AvgAggregate(mapl);
     }
 
     @Override
-    public InseAggregationOut MedianByLocationType(TipoLocalizacao tipoLocalizacao) {
-        return null;
+    public InseAggregationOut AvgByNetworkType(TipoRede tipoRede) {
+        var mapl = new HashMap<String, Long>();
+        mapl.put("tipoRede", tipoRede.code.longValue());
+        return aggregations.AvgAggregate(mapl);
     }
+
+
 }
