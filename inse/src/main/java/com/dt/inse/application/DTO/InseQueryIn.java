@@ -7,6 +7,8 @@ import java.util.Optional;
 public record InseQueryIn(
         int Page,
         int PerPage,
+
+        QueryOrder orderMediaInse,
         Optional<String> Uf,
         QueryOrder OrderUf,
         Optional<String> Municipio,

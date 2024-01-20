@@ -1,6 +1,7 @@
 package com.dt.inse.application.service.impl;
 
 import com.dt.inse.application.DTO.InseQueryIn;
+import com.dt.inse.application.DTO.InseQueryOut;
 import com.dt.inse.application.DTO.aggregation.InseAggregationOut;
 import com.dt.inse.application.gateways.IAggregations;
 import com.dt.inse.application.gateways.IPagedQuery;
@@ -31,7 +32,7 @@ public class InseService implements IInseService {
     }
 
     @Override
-    public Pagination<Inse> QueryInse(InseQueryIn in) {
+    public InseQueryOut QueryInse(InseQueryIn in) {
         return pagedQuery.QueryInse(in);
     }
 

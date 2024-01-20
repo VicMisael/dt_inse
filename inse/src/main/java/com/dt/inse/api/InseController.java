@@ -1,14 +1,13 @@
 package com.dt.inse.api;
 
 import com.dt.inse.application.DTO.InseQueryIn;
+import com.dt.inse.application.DTO.InseQueryOut;
 import com.dt.inse.application.DTO.aggregation.InseAggregationOut;
 import com.dt.inse.application.service.IInseService;
 import com.dt.inse.commons.QueryOrder;
 import com.dt.inse.domain.enumerations.TipoCapital;
 import com.dt.inse.domain.enumerations.TipoLocalizacao;
 import com.dt.inse.domain.enumerations.TipoRede;
-import com.dt.inse.domain.model.Inse;
-import com.dt.inse.domain.pagination.Pagination;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -23,22 +22,26 @@ public class InseController {
     }
 
     @GetMapping
-    public Pagination<Inse> QueryInse(@RequestParam Optional<Integer> page,
-                                      @RequestParam Optional<Integer> perPage,
-                                      @RequestParam Optional<String> uf,
-                                      @RequestParam Optional<QueryOrder> orderUf,
-                                      @RequestParam Optional<String> municipio,
-                                      @RequestParam Optional<QueryOrder> orderMunicipio,
-                                      @RequestParam Optional<String> querySchoolName,
-                                      @RequestParam Optional<QueryOrder> orderBySchoolName) {
+    public InseQueryOut QueryInse(@RequestParam Optional<Integer> page,
+                                  @RequestParam Optional<Integer> perPage,
+                                  @RequestParam Optional<QueryOrder> orderMediaInse,
+                                  @RequestParam Optional<String> uf,
+                                  @RequestParam Optional<QueryOrder> orderUf,
+                                  @RequestParam Optional<String> municipio,
+                                  @RequestParam Optional<QueryOrder> orderMunicipio,
+                                  @RequestParam Optional<String> querySchoolName,
+                                  @RequestParam Optional<QueryOrder> orderBySchoolName) {
         int perPageContent = perPage.orElse(10);
-        int pageN = page.orElse(10);
+        perPageContent = perPageContent > 0 ? perPageContent : 1;
+        int pageN = page.orElse(1);
+        var queryOrderMediaInse = orderMediaInse.orElse(QueryOrder.Desc);
         var queryOrder = orderUf.orElse(QueryOrder.Desc);
         var varordermunicipio = orderMunicipio.orElse(QueryOrder.Desc);
         var varorderSchoolName = orderBySchoolName.orElse(QueryOrder.Desc);
 
         var query = new InseQueryIn(pageN,
                 perPageContent,
+                queryOrderMediaInse,
                 uf,
                 queryOrder,
                 municipio,
