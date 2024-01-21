@@ -3,15 +3,13 @@ package com.dt.inse.api;
 import com.dt.inse.application.service.ILocationService;
 import com.dt.inse.domain.model.location.City;
 import com.dt.inse.domain.model.location.UF;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("location")
+@CrossOrigin(origins = "http://localhost:3000")
 public class LocationController {
     final ILocationService locationService;
 

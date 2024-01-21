@@ -14,6 +14,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("inse")
+@CrossOrigin(origins = "http://localhost:3000")
 public class InseController {
     final IInseService InseService;
 
