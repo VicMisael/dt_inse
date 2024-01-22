@@ -8,3 +8,4 @@ services:
       POSTGRES_DB: inse
     ports:
       - 5432:5432
+
