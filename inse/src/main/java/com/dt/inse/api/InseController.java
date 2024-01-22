@@ -33,8 +33,9 @@ public class InseController {
                                   @RequestParam Optional<String> querySchoolName,
                                   @RequestParam Optional<QueryOrder> orderBySchoolName) {
         int perPageContent = perPage.orElse(10);
-        perPageContent = perPageContent > 0 ? perPageContent : 1;
+        perPageContent = (perPageContent > 0 ? perPageContent : 1) > 100 ? 100 : perPageContent;
         int pageN = page.orElse(1);
+        pageN = pageN < 0 ? 1 : pageN;
         var queryOrderMediaInse = orderMediaInse.orElse(QueryOrder.Desc);
         var queryOrder = orderUf.orElse(QueryOrder.Desc);
         var varordermunicipio = orderMunicipio.orElse(QueryOrder.Desc);
