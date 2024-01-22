@@ -22,3 +22,6 @@ Esse sistema consiste em um programa de análise de dados educacionais
 * E encontre a tabela inse
 * Clique com o botão direito e siga os passos para importar
 * Certifique-se que o csv é dividido por ","
+
+# Rodando o Front-end
+* Siga o passo a passo no Readme.MD da pasta inse-webapp
