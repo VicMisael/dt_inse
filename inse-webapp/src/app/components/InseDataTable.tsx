@@ -10,12 +10,9 @@ const InseDataTable: React.FC<InseDataTableProps> = ({ data }) => {
   const renderTableRows = (items: InseItem[]) => {
     return items.map((item, index) => (
       <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-        <td className="">{item.AnoSaeb}</td>
-        <td className="">{item.CodUF}</td>
         <td className="">{item.NomeUF}</td>
         <td className="">{item.CodMunicipio}</td>
         <td className="">{item.NomeMunicipio}</td>
-        <td className="">{item.IdEscola}</td>
         <td className="">{item.NomeEscola}</td>
         <td className="">{item.tipoRede}</td>
         <td className="">{item.tipoLocalizacao}</td>
