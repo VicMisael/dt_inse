@@ -33,7 +33,6 @@ public class PagedQuery implements IPagedQuery {
 
         List<Predicate> predicates = getPredicates(in, cb, inseRoot);
         ArrayList<Order> orderList = getOrders(in, cb, inseRoot);
-        //Salva uma cópia
 
         query.where(predicates.toArray(new Predicate[0]));
         query.orderBy(orderList);
@@ -43,12 +42,11 @@ public class PagedQuery implements IPagedQuery {
         typedQuery.setMaxResults(in.PerPage());
         List<InseJpaEntity> results = typedQuery.getResultList();
 
-        // Count Query setup
         CriteriaQuery<Long> countQuery = cb.createQuery(Long.class);
-        Root<InseJpaEntity> countRoot = countQuery.from(InseJpaEntity.class); // New root for count query
+        Root<InseJpaEntity> countRoot = countQuery.from(InseJpaEntity.class);
 
         countQuery.select(cb.count(countRoot));
-        countQuery.where(cb.and(getPredicates(in, cb, countRoot).toArray(new Predicate[0]))); // Apply same predicates to count query
+        countQuery.where(cb.and(getPredicates(in, cb, countRoot).toArray(new Predicate[0])));
 
         TypedQuery<Long> countTypedQuery = entityManager.createQuery(countQuery);
         long total = countTypedQuery.getSingleResult();
