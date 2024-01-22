@@ -7,7 +7,7 @@ Esse sistema consiste em um programa de análise de dados educacionais
 
 # Requisitos
 * [Docker](https://docs.docker.com/get-docker/)
-* [NodeJs-v20.11.0] (https://nodejs.org/en)
+* [NodeJs-v20.11.0](https://nodejs.org/en)
 # Rodando a aplicação
 
 ```console
@@ -17,4 +17,8 @@ Esse sistema consiste em um programa de análise de dados educacionais
 ```
 
 # Inserindo os dados
-    * Utilize o DBeaver, conecte-se a base de dados, e encontre a tabela
+* Utilize o DBeaver 
+* conecte-se a base de dados
+* E encontre a tabela inse
+* Clique com o botão direito e siga os passos para importar
+* Certifique-se que o csv é dividido por ","
