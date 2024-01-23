@@ -10,6 +10,7 @@ import com.dt.inse.domain.enumerations.TipoLocalizacao;
 import com.dt.inse.domain.enumerations.TipoRede;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -33,7 +34,8 @@ public class InseController {
                                   @RequestParam Optional<String> querySchoolName,
                                   @RequestParam Optional<QueryOrder> orderBySchoolName) {
         int perPageContent = perPage.orElse(10);
-        perPageContent = (perPageContent > 0 ? perPageContent : 1) > 100 ? 100 : perPageContent;
+        perPageContent = Math.max(perPageContent,1);
+        perPageContent = Math.min(perPageContent, 100);
         int pageN = page.orElse(1);
         pageN = pageN < 0 ? 1 : pageN;
         var queryOrderMediaInse = orderMediaInse.orElse(QueryOrder.Desc);
