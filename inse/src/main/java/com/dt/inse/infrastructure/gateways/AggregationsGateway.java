@@ -21,7 +21,7 @@ import static com.dt.inse.infrastructure.gateways.commom.AggregationUtils.getAgg
 @Repository
 public class AggregationsGateway implements IAggregations {
     private static final String[] VALID_KEYS =
-            {"CodUF",
+            {"codUF",
                     "CodMunicipio",
                     "tipoRede",
                     "tipoLocalizacao",
@@ -40,7 +40,7 @@ public class AggregationsGateway implements IAggregations {
         List<Predicate> predicateList = new ArrayList<>();
         for (String s : fields.keySet()) {
             if (Arrays.stream(VALID_KEYS).toList().contains(s)) {
-                var code = fields.get(s);
+                Long code = fields.get(s);
                 predicateList.add(cb.equal(root.get(s), code));
             }
         }

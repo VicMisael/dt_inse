@@ -39,7 +39,7 @@ public class InseService implements IInseService {
     @Override
     public InseAggregationOut AvgByState(Long UfCode) {
         var mapl = new HashMap<String, Long>();
-        mapl.put("CodUF", UfCode);
+        mapl.put("codUF", UfCode);
         return aggregations.AvgAggregate(mapl);
 
     }

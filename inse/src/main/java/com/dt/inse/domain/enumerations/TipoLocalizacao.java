@@ -1,7 +1,7 @@
 package com.dt.inse.domain.enumerations;
 
 public enum TipoLocalizacao {
-    Urbana(1), Rural(1);
+    Urbana(1), Rural(2);
     public final Integer code;
 
     public static TipoLocalizacao fromInteger(Integer i) {
